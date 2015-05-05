@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Nicola Ferraro <nibbio84@gmail.com>
+MAINTAINER  Jared Holmberg <jared.holmberg@orchestro.com>
 
 RUN yum install -y git
 
@@ -21,6 +21,10 @@ RUN sbt reStart
 
 EXPOSE 8090
 
-ADD ./start-jobserver.sh ./
+ADD /spark/spark-jobserver/bin/server_start.sh ./
 
-CMD ./start-jobserver.sh
+RUN pwd
+
+RUN ls -la
+
+CMD /spark/spark-jobserver/bin/server_start.sh
